@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core System Colors */
+    --color-background: #FAFAFA; /* gray-50 */
+    --color-foreground: #2C2C2C; /* gray-800 */
+    --color-border: #E5E7EB; /* gray-200 */
+    --color-input: #F9FAFB; /* gray-50 */
+    --color-ring: #00A8FF; /* blue-500 */
+    
+    /* Card & Surface Colors */
+    --color-card: #FFFFFF; /* white */
+    --color-card-foreground: #2C2C2C; /* gray-800 */
+    --color-popover: #FFFFFF; /* white */
+    --color-popover-foreground: #2C2C2C; /* gray-800 */
+    --color-muted: #F5F5F5; /* gray-100 */
+    --color-muted-foreground: #6B7280; /* gray-500 */
+    
+    /* Brand Colors */
+    --color-primary: #1A1A1A; /* gray-900 */
+    --color-primary-foreground: #FFFFFF; /* white */
+    --color-secondary: #D4AF37; /* yellow-600 */
+    --color-secondary-foreground: #1A1A1A; /* gray-900 */
+    
+    /* State Colors */
+    --color-destructive: #EF4444; /* red-500 */
+    --color-destructive-foreground: #FFFFFF; /* white */
+    --color-accent: #00A8FF; /* blue-500 */
+    --color-accent-foreground: #FFFFFF; /* white */
+    --color-success: #10B981; /* emerald-500 */
+    --color-success-foreground: #FFFFFF; /* white */
+    --color-warning: #F59E0B; /* amber-500 */
+    --color-warning-foreground: #1A1A1A; /* gray-900 */
+    --color-error: #EF4444; /* red-500 */
+    --color-error-foreground: #FFFFFF; /* white */
+    
+    /* Cinema-specific Colors */
+    --color-cinema-gold: #D4AF37; /* yellow-600 */
+    --color-cinema-black: #1A1A1A; /* gray-900 */
+    --color-electric-blue: #00A8FF; /* blue-500 */
+    --color-conversion-orange: #FF6B35; /* orange-500 */
+    --color-text-primary: #2C2C2C; /* gray-800 */
+    --color-text-secondary: #6B7280; /* gray-500 */
+    --color-surface: #F5F5F5; /* gray-100 */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+  }
+  
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer components {
+  /* Cinematic Effects */
+  .cinematic-hero {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(26, 26, 26, 0.4) 100%);
+    backdrop-filter: blur(10px);
+    transition: all 2.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  
+  .movie-card-hover {
+    transition: all 0.3s ease-out;
+  }
+  
+  .movie-card-hover:hover {
+    transform: translateY(-8px) rotateY(5deg);
+    box-shadow: 0 12px 24px rgba(212, 175, 55, 0.3);
+    filter: brightness(1.1);
+  }
+  
+  .atmospheric-lighting {
+    background: conic-gradient(from 45deg, #1a1a1a, #2d2d2d, #1a1a1a);
+    mix-blend-mode: overlay;
+  }
+  
+  .premium-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cinema-border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Animation Classes */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .stagger-animation {
+    animation-delay: calc(var(--index) * 0.1s);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s infinite;
+  }
+  
+  .shimmer-loading {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200px 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .snap-center {
+    scroll-snap-align: center;
+  }
+}
